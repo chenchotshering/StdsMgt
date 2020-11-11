@@ -1,0 +1,99 @@
+{% extends 'hod_template/base_template.html' %}
+{% load static %}
+{% block title %}Edit Student Details{% endblock title %}
+{% block main_content %}
+    <div class="single-pro-review-area mt-t-30 mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-payment-inner-st">
+                            <ul id="myTabedu1" class="tab-review-design">
+                                <li class="active"><a href="#description">Edit Student | {{ student.admin.first_name}}({{ student.admin.username }})</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div id="dropzone1" class="pro-ad">
+                                                    <form action="/edit_student_save" method="POST" enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input name="firstname" type="text" class="form-control" placeholder="First Name" value="{{ student.admin.first_name }}">
+                                                                    <input name="std_id" type="hidden" value="{{ student.admin.id }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="lastname" type="text" class="form-control" placeholder="Last Name" value="{{ student.admin.last_name }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="email" type="email" class="form-control" placeholder="Enter Email" value="{{ student.admin.email }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="username" type="text" class="form-control" placeholder="Username" value="{{ student.admin.username }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="address" type="text" class="form-control" placeholder="Address" value="{{ student.address }}" >
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Course</label>
+                                                                    <select class="form-control" name="course">
+                                                                        {% for course in courses %}
+                                                                            <option value="{{ course.id }}" {% if course.id == student.course_id.id %} selected {% endif %}>{{ course.name }}</option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Sex</label>
+                                                                    <select class="form-control" name="sex">
+                                                                            <option {% if student.gender == "Male" %} selected {% endif %}>Male</option>
+                                                                            <option {% if student.gender == "Female" %} selected {% endif %}>Female</option>
+                                                                    </select>
+                                                                </div>
+                                                                 <div class="form-group">
+                                                                     <label>Session Start</label>
+                                                                    <input name="session_start" type="date" class="form-control" placeholder="Session Start Year" value="{{ student.start_session_year|date:'Y-m-d'}}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Session End</label>
+                                                                    <input name="session_end" type="date" class="form-control" placeholder="Session End Year" value="{{ student.end_session_year|date:'Y-m-d'}}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Profile Picture</label>
+                                                                    <input name="profile_pic" type="file" class="form-control" value="{{ student.profile_pic }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    {% if messages %}
+                                                                        {% for message in messages %}
+                                                                            {% if message.tags == 'error' %}
+                                                                                <div class="alert alert-danger">{{ message }}</div>
+                                                                            {% endif %}
+                                                                            {% if message.tags == 'success' %}
+                                                                                <div class="alert alert-info">{{ message }}</div>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">SAVE</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock main_content %}
