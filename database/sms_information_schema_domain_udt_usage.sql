@@ -1,0 +1,5 @@
+INSERT INTO information_schema.domain_udt_usage (udt_catalog, udt_schema, udt_name, domain_catalog, domain_schema, domain_name) VALUES ('sms', 'pg_catalog', 'name', 'sms', 'information_schema', 'sql_identifier');
+INSERT INTO information_schema.domain_udt_usage (udt_catalog, udt_schema, udt_name, domain_catalog, domain_schema, domain_name) VALUES ('sms', 'pg_catalog', 'int4', 'sms', 'information_schema', 'cardinal_number');
+INSERT INTO information_schema.domain_udt_usage (udt_catalog, udt_schema, udt_name, domain_catalog, domain_schema, domain_name) VALUES ('sms', 'pg_catalog', 'varchar', 'sms', 'information_schema', 'character_data');
+INSERT INTO information_schema.domain_udt_usage (udt_catalog, udt_schema, udt_name, domain_catalog, domain_schema, domain_name) VALUES ('sms', 'pg_catalog', 'varchar', 'sms', 'information_schema', 'yes_or_no');
+INSERT INTO information_schema.domain_udt_usage (udt_catalog, udt_schema, udt_name, domain_catalog, domain_schema, domain_name) VALUES ('sms', 'pg_catalog', 'timestamptz', 'sms', 'information_schema', 'time_stamp');

@@ -1,0 +1,4 @@
+INSERT INTO public."StdMgtApp_courses" (id, name, created_at, updated_at) VALUES (1, 'Bhutanese and Himalaya Studies ', '2020-10-15 07:29:18.747447', '2020-10-15 07:29:18.747447');
+INSERT INTO public."StdMgtApp_courses" (id, name, created_at, updated_at) VALUES (3, 'Diploma in Language and Literature ', '2020-10-15 07:29:29.467430', '2020-10-15 07:29:29.467430');
+INSERT INTO public."StdMgtApp_courses" (id, name, created_at, updated_at) VALUES (4, 'MA in  Philisophy ', '2020-10-15 07:29:41.118046', '2020-10-15 07:29:41.118046');
+INSERT INTO public."StdMgtApp_courses" (id, name, created_at, updated_at) VALUES (2, 'BA in Language and Literature', '2020-10-15 07:29:24.463951', '2020-10-15 07:29:24.464933');

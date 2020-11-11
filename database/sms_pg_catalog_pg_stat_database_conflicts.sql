@@ -1,0 +1,5 @@
+INSERT INTO pg_catalog.pg_stat_database_conflicts (datid, datname, confl_tablespace, confl_lock, confl_snapshot, confl_bufferpin, confl_deadlock) VALUES (13442, 'postgres', 0, 0, 0, 0, 0);
+INSERT INTO pg_catalog.pg_stat_database_conflicts (datid, datname, confl_tablespace, confl_lock, confl_snapshot, confl_bufferpin, confl_deadlock) VALUES (16394, 'sms', 0, 0, 0, 0, 0);
+INSERT INTO pg_catalog.pg_stat_database_conflicts (datid, datname, confl_tablespace, confl_lock, confl_snapshot, confl_bufferpin, confl_deadlock) VALUES (1, 'template1', 0, 0, 0, 0, 0);
+INSERT INTO pg_catalog.pg_stat_database_conflicts (datid, datname, confl_tablespace, confl_lock, confl_snapshot, confl_bufferpin, confl_deadlock) VALUES (13441, 'template0', 0, 0, 0, 0, 0);
+INSERT INTO pg_catalog.pg_stat_database_conflicts (datid, datname, confl_tablespace, confl_lock, confl_snapshot, confl_bufferpin, confl_deadlock) VALUES (16786, 'test_sms', 0, 0, 0, 0, 0);

@@ -1,0 +1,5 @@
+INSERT INTO public."StdMgtApp_subjects" (id, name, created_at, updated_at, course_id_id, staff_id_id) VALUES (2, 'History of Bhutan', '2020-10-16 08:29:31.209247', '2020-10-16 08:29:31.209247', 2, 2);
+INSERT INTO public."StdMgtApp_subjects" (id, name, created_at, updated_at, course_id_id, staff_id_id) VALUES (3, 'Academic Skills 2', '2020-10-29 09:17:08.932035', '2020-10-29 09:17:08.932035', 4, 4);
+INSERT INTO public."StdMgtApp_subjects" (id, name, created_at, updated_at, course_id_id, staff_id_id) VALUES (4, 'History of Bhutan I', '2020-10-29 09:18:00.535788', '2020-10-29 09:18:00.535788', 4, 4);
+INSERT INTO public."StdMgtApp_subjects" (id, name, created_at, updated_at, course_id_id, staff_id_id) VALUES (5, 'IT Skills ', '2020-10-29 09:19:26.763655', '2020-10-29 09:19:26.763655', 3, 2);
+INSERT INTO public."StdMgtApp_subjects" (id, name, created_at, updated_at, course_id_id, staff_id_id) VALUES (1, 'English Communication Skills', '2020-10-16 08:26:56.845875', '2020-10-16 08:26:56.845875', 2, 3);

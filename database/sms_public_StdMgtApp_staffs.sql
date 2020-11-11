@@ -1,0 +1,1 @@
+INSERT INTO public."StdMgtApp_staffs" (id, address, created_at, updated_at, admin_id) VALUES (1, 'CLCS, Trongsa', '2020-10-15 07:30:21.117547', '2020-10-15 07:30:21.117547', 2);

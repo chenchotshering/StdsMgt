@@ -1,0 +1,1 @@
+INSERT INTO pg_catalog.pg_stat_gssapi (pid, gss_authenticated, principal, encrypted) VALUES (25952, false, null, false);
