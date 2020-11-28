@@ -16,25 +16,8 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                    <form action="/add_student_save" method="POST" enctype="multipart/form-data">
-                                                        {% csrf_token %}
-                                                            {{ form }}
-                                                        <div class="form-group">
-                                                            {% if messages %}
-                                                                {% for message in messages %}
-                                                                    {% if message.tags == 'error' %}
-                                                                        <div class="alert alert-danger">{{ message }}</div>
-                                                                    {% endif %}
-                                                                    {% if message.tags == 'success' %}
-                                                                        <div class="alert alert-info">{{ message }}</div>
-                                                                    {% endif %}
-                                                                {%  endfor %}
-                                                            {% endif %}
-                                                        </div>
-                                                        <div class="payment-adress">
-                                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Add New Student</button>
-                                                        </div>
-                                                    </form>
+                                                    {% url 'add_student_save' as action_path %}
+                                                    {% include 'hod_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Add Button" %}
                                                 </div>
                                             </div>
                                         </div>
