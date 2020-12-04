@@ -1,0 +1,20 @@
+{% load static %}
+<nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="index.html"><img class="main-logo" src="{% static 'adminplugins/img/logo/logo.png' %}" alt="" /></a>
+                <strong><a href="index.html"><img src="{% static 'adminplugins/img/logo/logosn.png'%}" alt="" /></a></strong>
+            </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Staffs</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                 {% url 'student_home' as student_home %}
+                                <li><a title="All Staffs" href="{% url 'student_home' %}"><span class="mini-sub-pro">Student Home</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>

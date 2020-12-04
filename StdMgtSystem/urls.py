@@ -19,12 +19,12 @@ from django.urls import path
 
 from StdMgtSystem import settings
 from StdMgtApp import views
-from StdMgtApp import HodViews
+from StdMgtApp import HodViews, StaffViews, StudentViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('demo', views.showDemoPage),
-    path('',views.showLoginPage),
+    path('',views.showLoginPage,name="show_login"),
     path('get_user_details', views.GetUserDetails),
     path('logout_user', views.logout_user,name="logout"),
     path('dologin', views.doLogin,name="dologin"),
@@ -49,4 +49,7 @@ urlpatterns = [
     path('edit_course_save', HodViews.edit_course_save,name="edit_course_save"),
     path('edit_subject/<str:subject_id>', HodViews.edit_subject,name="edit_subject"),
     path('edit_subject_save', HodViews.edit_subject_save,name="edit_subject_save"),
+    # Staff URL Path
+    path('staff_home', StaffViews.staff_home,name="staff_home"),
+    path('student_home', StudentViews.student_home,name="student_home"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
