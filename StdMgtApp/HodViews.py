@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from StdMgtApp.forms import AddStudentForm, EditStudentForm
-from StdMgtApp.models import CustomUser, Courses, Subjects, Staffs, Students
+from StdMgtApp.models import CustomUser, Courses, Subjects, Staffs, Students, SessionYearModel
 
 
 def admin_home(request):
@@ -59,6 +59,22 @@ def add_course_save(request):
             return HttpResponseRedirect(reverse("add_course"))
 
 
+def add_session_save(request):
+    if request.method != "POST":
+        return HttpResponse(reverse("manage_session"))
+    else:
+        start_session = request.POST.get('session_start_year')
+        end_session = request.POST.get('session_end_year')
+        try:
+            session = SessionYearModel(session_start_year=start_session, session_end_year=end_session)
+            session.save()
+            messages.success(request, "Successfully Added Session")
+            return HttpResponseRedirect(reverse("manage_session"))
+        except:
+            messages.error(request, "Failed to Add Session")
+            return HttpResponseRedirect(reverse("session_Session"))
+
+
 def add_student(request):
     form = AddStudentForm()
     return render(request, "hod_template/add_student_template.html", {"form":form})
@@ -76,8 +92,7 @@ def add_student_save(request):
             password = form.cleaned_data['password']
             address = form.cleaned_data['address']
             email = form.cleaned_data['email']
-            session_start = form.cleaned_data['session_start']
-            session_end = form.cleaned_data['session_end']
+            session_year_id = form.cleaned_data['session_year_id']
             course_id = form.cleaned_data['course']
             sex = form.cleaned_data['sex']
 
@@ -94,11 +109,8 @@ def add_student_save(request):
                 course_obj = Courses.objects.get(id=course_id)
                 user.students.course_id = course_obj
 
-                # session_start = datetime.datetime.strptime(session_start, '%d-%m-%y').strftime('%Y-%m-%d')
-                # session_end = datetime.datetime.strptime(session_end, '%d-%m-%y').strftime('%Y-%m-%d')
-
-                user.students.start_session_year = session_start
-                user.students.end_session_year = session_end
+                session_year = SessionYearModel.objects.get(id=session_year_id)
+                user.students.session_year_id = session_year
                 user.students.profile_pic = profile_pic_url
                 user.students.sex = sex
                 user.save()
@@ -157,6 +169,10 @@ def manage_subject(request):
     subjects = Subjects.objects.all()
     return render(request, "hod_template/manage_subject_template.html", {"subjects": subjects})
 
+def manage_session(request):
+    sessions = SessionYearModel.objects.all()
+    return render(request,"hod_template/manage_session_template.html", {"session": sessions})
+
 
 def edit_staff(request, staff_id):
     staff = Staffs.objects.get(admin=staff_id)
@@ -205,8 +221,7 @@ def edit_student(request, student_id):
     form.fields['address'].initial=student.address
     form.fields['course'].initial=student.course_id.id
     form.fields['sex'].initial=student.gender
-    form.fields['session_start'].initial=student.start_session_year
-    form.fields['session_end'].initial=student.end_session_year
+    form.fields['session_year_id'].initial=student.session_year_id.id
 
     return render(request, "hod_template/edit_student_template.html", {"form":form, "id": student_id, "username":student.admin.username})
 
@@ -228,8 +243,7 @@ def edit_student_save(request):
             address = form.cleaned_data['address']
             course_id = form.cleaned_data['course']
             sex = form.cleaned_data['sex']
-            session_start = form.cleaned_data['session_start']
-            session_end = form.cleaned_data['session_end']
+            session_year_id = form.cleaned_data['session_year_id']
 
             if request.FILES.get('profile_pic',False):
                 profile_pic = request.FILES['profile_pic']
@@ -251,11 +265,13 @@ def edit_student_save(request):
                 std_model.address = address
                 std_model.course_id.course = course_id
                 std_model.gender = sex
-                std_model.start_session_year = session_start
-                std_model.end_session_year = session_end
+
+                session_year = SessionYearModel.objects.get(id=session_year_id)
+                std_model.session_year_id = session_year
 
                 courses = Courses.objects.get(id=course_id)
                 std_model.course_id=courses
+
                 if profile_pic_url!=None:
                     std_model.profile_pic=profile_pic_url
                 std_model.save()

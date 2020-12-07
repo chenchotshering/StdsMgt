@@ -4,6 +4,14 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+
+class SessionYearModel(models.Model):
+    id=models.AutoField(primary_key=True)
+    session_start_year=models.DateField()
+    session_end_year=models.DateField()
+    objects = models.Manager()
+
+
 class CustomUser(AbstractUser):
     user_data_type = ((1, "HOD"), (2, "Staff"), (3, "Student"))
     user_type = models.CharField(default=1, choices=user_data_type, max_length=10)
@@ -51,8 +59,7 @@ class Students(models.Model):
     gender = models.CharField(max_length=255)
     profile_pic = models.FileField()
     course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING)
-    start_session_year = models.DateTimeField()
-    end_session_year = models.DateTimeField()
+    session_year_id = models.ForeignKey(SessionYearModel, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
@@ -61,6 +68,7 @@ class Students(models.Model):
 class Attendance(models.Model):
     id = models.AutoField(primary_key=True)
     subject_id = models.ForeignKey(Subjects, on_delete=models.DO_NOTHING)
+    session_year_id = models.ForeignKey(SessionYearModel, on_delete=models.CASCADE)
     attendance_date = models.DateTimeField(auto_now_add=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
@@ -143,8 +151,7 @@ def create_user_profile(sender, instance, created, **kwargs):
         if instance.user_type == 2:
             Staffs.objects.create(admin=instance)
         if instance.user_type == 3:
-            Students.objects.create(admin=instance, course_id=Courses.objects.get(id=1),
-                                    start_session_year='2020-01-01', end_session_year='2021-01-01',
+            Students.objects.create(admin=instance, course_id=Courses.objects.get(id=1),session_year_id=SessionYearModel.objects.get(id=1),
                                     address="", profile_pic="", gender="")
 
 

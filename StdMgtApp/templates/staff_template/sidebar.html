@@ -14,6 +14,13 @@
                                 <li><a title="All Staffs" href="{% url 'staff_home' %}"><span class="mini-sub-pro">Staff Home</span></a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Attendance</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                {% url 'staff_take_attendance' as staff_take_attendance %}
+                                <li><a title="All Courses" href="{% url 'staff_take_attendance' %}"><span class="mini-sub-pro">Take Attendance</span></a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
