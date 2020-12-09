@@ -33,3 +33,8 @@ def get_students(request):
         data_small = {"id": student.admin.id, "name": student.admin.first_name + " " + student.admin.last_name}
         list_data.append(data_small)
     return JsonResponse(json.dumps(list_data), content_type="application/json", safe=False)
+
+
+@csrf_exempt
+def save_attendance_data(request):
+    student_ids=request.POST.get("")

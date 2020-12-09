@@ -86,14 +86,26 @@
             .done(function (response) {
                 var json_data = JSON.parse(response);
                 console.log(json_data)
-                var div_data="";
+                var div_data="<div class='form-group-sm'><label>Attendance Date : </label><input type='date' name='attendance_date' id='attendance_date' class='form-control'></div><div class='form-group'><div class='row'>";
                 for (key in json_data){
-                     div_data+="<input type='checkbox' checked='checked' class='form-control form-group form-group-sm' name='student_data[]' value='"+json_data[key]['id']+"'>"+json_data[key]['name']
+                     div_data+="<input type='checkbox' checked='checked' name='student_data[]' value='"+json_data[key]['id']+"'>&nbsp;&nbsp;"+json_data[key]['name']+"<br/>"
                 }
+                div_data+="</div></div>";
+                div_data+="<div class='form-group'>";
+                div_data+="<button id='save_attendance' class='btn-success' type='button'>Save Attendance</button>";
+                div_data+="</div>";
                 $("#student_data").html(div_data);
             })
             .fail(function (response) {
                 alert("Error in Fetching Student")
+            })
+            $(document).on("click","#save_attendance", function(){
+                console.log("save")
+                console.log($("input[name='student_data[]']").val())
+                var student_data=$("input[name='student_data[]']").map(function () { return $(this).val();}).get()
+                var attendance_date = $("#attendance_date").val();
+                console.log(attendance_date)
+                console.log(student_data)
             })
         })
     })
