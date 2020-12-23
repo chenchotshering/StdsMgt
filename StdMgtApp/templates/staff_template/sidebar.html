@@ -23,6 +23,20 @@
                                 <li><a title="Updat Attendance" href="{% url 'staff_update_attendance' %}"><span class="mini-sub-pro">View Update Attendance</span></a></li>
                             </ul>
                         </li>
+                          <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Leave</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                 {% url 'apply_staff_leave' as staff_leave %}
+                                <li><a title="All Staffs" href="{% url 'staff_apply_leave' %}"><span class="mini-sub-pro">Apply Leave</span></a></li>
+                            </ul>
+                        </li>
+                          <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Feedback</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                 {% url 'staff_feedback' as feedback %}
+                                <li><a title="All Staffs" href="{% url 'staff_feedback' %}"><span class="mini-sub-pro">Staff Feedback</span></a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
