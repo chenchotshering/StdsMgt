@@ -19,6 +19,8 @@
                             <ul class="submenu-angle" aria-expanded="false">
                                 {% url 'staff_take_attendance' as staff_take_attendance %}
                                 <li><a title="All Courses" href="{% url 'staff_take_attendance' %}"><span class="mini-sub-pro">Take Attendance</span></a></li>
+                                {% url 'staff_update_attendance' as staff_update_attendance %}
+                                <li><a title="Updat Attendance" href="{% url 'staff_update_attendance' %}"><span class="mini-sub-pro">View Update Attendance</span></a></li>
                             </ul>
                         </li>
                     </ul>
