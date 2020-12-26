@@ -54,7 +54,8 @@ ROOT_URLCONF = 'StdMgtSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        #'DIRS': [BASE_DIR / 'templates']
+        'DIRS': ['StdMgtApp/templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,3 +127,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTH_USER_MODEL = "StdMgtApp.CustomUser"
 AUTHENTICATION_BACKENDS = ['StdMgtApp.EmailBackEnd.EmailBackEnd']
+
+#EMAIL_BACKEND="django.core.mail.backends.filebased.EmailBackend"
+#EMAIL_FILE_PATH=os.path.join(BASE_DIR,"sent_mails")
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER =  'chenchotshering777@gmail.com'
+EMAIL_HOST_PASSWORD = '@chencho@'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'chenchotshering777@gmail.com'

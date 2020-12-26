@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from StdMgtSystem import settings
 from StdMgtApp import views
 from StdMgtApp import HodViews, StaffViews, StudentViews
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('demo', views.showDemoPage),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('',views.showLoginPage,name="show_login"),
     path('get_user_details', views.GetUserDetails),
     path('logout_user', views.logout_user,name="logout"),

@@ -8,6 +8,7 @@ class LoginCheckMiddleWare(MiddlewareMixin):
     def process_view(self,request,view_func,view_args,view_kwargs):
         modulename=view_func.__module__
         #print(modulename)
+        #print(request.path)
         user = request.user
         if user.is_authenticated:
             if user.user_type=="1":
@@ -34,8 +35,9 @@ class LoginCheckMiddleWare(MiddlewareMixin):
             else:
                     return HttpResponseRedirect(reverse("show_login"))
         else:
-            if request.path == reverse("show_login") or request.path == reverse("dologin"):
+            if request.path == reverse("show_login") or request.path == reverse("dologin") or modulename == "django.contrib.auth.views":
                 pass
+
             else:
                 return HttpResponseRedirect(reverse("show_login"))
 
