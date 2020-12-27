@@ -3,6 +3,7 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from StdMgtApp.forms import AddStudentForm, EditStudentForm
 from StdMgtApp.models import CustomUser, Courses, Subjects, Staffs, Students, SessionYearModel
@@ -341,5 +342,23 @@ def edit_subject_save(request):
             messages.error(request, "Failed to Edit the Subject")
             return HttpResponseRedirect(reverse("edit_subject", kwargs={"subject_id": subject_id}))
 
+@csrf_exempt
+def check_email_exist(request):
+    email = request.POST.get("email")
+    user_obj = CustomUser.objects.filter(email=email).exists()
+
+    if user_obj:
+        return HttpResponse(True)
+    else:
+        return HttpResponse(False)
 
 
+@csrf_exempt
+def check_username_exist(request):
+    username = request.POST.get("username")
+    user_obj = CustomUser.objects.filter(username=username).exists()
+
+    if user_obj:
+        return HttpResponse(True)
+    else:
+        return HttpResponse(False)
