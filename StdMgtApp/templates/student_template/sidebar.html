@@ -7,11 +7,10 @@
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
+                        <li><a title="Home" href="{% url 'student_home' %}"><span class="mini-sub-pro">Home</span></a></li>
                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Dashboard</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Attendance</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                 {% url 'student_home' as student_home %}
-                                <li><a title="Home" href="{% url 'student_home' %}"><span class="mini-sub-pro">Home</span></a></li>
                                 <li><a title="View Attendance" href="{% url 'student_view_attendance' %}"><span class="mini-sub-pro">View Attendance</span></a></li>
                             </ul>
                         </li>
